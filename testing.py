@@ -3,6 +3,7 @@
 from clean_done.clean_str import *
 from conn_mysql_update import *
 from functools import lru_cache
+from the_N_excelsheets import *
 
 class Model():
 
@@ -22,7 +23,10 @@ def mainmian(orinin_0,Nexcels):
     #循环放在缓存当中
     i = 0
     for i in range(1):
-        model.calculate(orinin_0,Nexcels)
+        try:
+            model.calculate(orinin_0,Nexcels)
+        except IndexError:
+            pass
 
     #从缓存提取数据
     for i in range(1):
@@ -36,4 +40,3 @@ def mainmian(orinin_0,Nexcels):
             conntsql().create_table(orinin_0,create_names_excel)
             conntsql().insert_data(orinin_0,sheet,create_names_excel,aaa)
             Now_N_sheets111 += 1
-
