@@ -68,7 +68,7 @@ class conntsql():
         """
 
         create_mysql_3 = create_mysql_0 +  create_names_excel + "_" + str(Now_N_sheets) + create_mysql_2
-        conntsql().cursor.execute(create_mysql_3)
+        conntsql().cursor.execute(create_mysql_3)  #pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query ([WinError 10053] 您的主机中的软件中止了一个已建立的连接。)')
         conntsql().connect.commit()
 
     def insert_data(self,Now_N_sheets,sheet,create_names_excel,aaa):
@@ -108,9 +108,12 @@ class conntsql():
                     the_i_data_shougu_data,the_i_data_stores,the_i_data_njobs,the_i_data_ryzt,the_i_data_zw,the_i_data_yfgz,the_i_data_shgz,the_i_data_sfgz,the_i_data_jbgz,
                     the_i_data_qqj,the_i_data_gdgzze,the_i_data_nlgz,the_i_data_gljt,the_i_data_cb,the_i_data_qqkk,the_i_data_fdgzze,the_i_data_yzgz)
 
-            conntsql().cursor.execute(sql_insert % data)
-            conntsql().connect.commit()
-            i += 1
+            try:
+                conntsql().cursor.execute(sql_insert % data)
+                conntsql().connect.commit()
+                i += 1
+            except pymysql.err.DataError:
+                i += 1
 
     def close_database(self):
         conntsql().connect.close()
