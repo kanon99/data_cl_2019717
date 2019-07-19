@@ -137,8 +137,11 @@ class conntsql2(object):
                                 pass
                                 continue
                             else:
-                                srt1 = " UPDATE " + cn_ll1 + " SET " + cn_ll1+"."+ cl_31[s] + " = " + "'" + t[0][0] + "'" + " WHERE " + cn_ll1+ ".nemes = " + "'"+l_name[i]+"'"
-                                conntsql2().cursor.execute(srt1)
-                                conntsql2().connect.commit()
+                                try:
+                                    srt1 = " UPDATE " + cn_ll1 + " SET " + cn_ll1+"."+ cl_31[s] + " = " + "'" + t[0][0] + "'" + " WHERE " + cn_ll1+ ".nemes = " + "'"+l_name[i]+"'"
+                                    conntsql2().cursor.execute(srt1)
+                                    conntsql2().connect.commit()
+                                except TypeError:
+                                    pass
                     except IndexError:
                         pass
