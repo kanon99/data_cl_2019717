@@ -1,6 +1,7 @@
 from testing import *
 import xlrd
 import time
+#第一步骤
 
 if __name__ == "__main__":
 
@@ -13,17 +14,21 @@ if __name__ == "__main__":
 
     for j in range(excels):
         first_row_values = sheet02.row_values(j)
-        workbook = xlrd.open_workbook(first_row_values[0])
+        try:
+            workbook = xlrd.open_workbook(first_row_values[0])
+        except xlrd.biffh.XLRDError:
+            pass
+
         Nsheets = len(workbook.sheet_names())
 
         for i in range(Nsheets):
             try:
                 mainmian(i,j)
-            except KeyError:
+            except KeyError or IndexError :
                 pass
                 continue
-
             i += 1
+        print(first_row_values)
         j += 1
 
     end = time.process_time()
