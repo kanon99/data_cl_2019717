@@ -21,32 +21,38 @@ def clesrningg(Now_N_sheets,j):
     strnumbers9= a.find("\'")
     strnumbers10= a.find("\;")
     strnumbers11= a.find(" ")
-    if strnumbers > 0:
-        aa = list.rename(columns=lambda x: x.replace('-', ''), inplace=True)
-    if strnumbers1 > 0:
-        aa = list.rename(columns=lambda x: x.replace('*', ''), inplace=True)
-    if strnumbers3 > 0:
-        aa = list.rename(columns=lambda x: x.replace(' ', ''), inplace=True)
-    if strnumbers13 > 0:
-        aa = list.rename(columns=lambda x: x.replace('\n', ''), inplace=True)
-    if strnumbers4 > 0:
-        aa = list.replace("*",'')
-    if strnumbers5 > 0:
-        aa = list.replace("\'",'')
-    if strnumbers6 > 0:
-        aa = list.replace("\n",'')
-    if strnumbers7 > 0:
-        aa = list.replace("\r",'')
-    if strnumbers8 > 0:
-        aa = list.replace("\f",'')
-    if strnumbers9 > 0:
-        aa = list.replace("\'",'')
-    if strnumbers10 > 0:
-        aa = list.replace("\;",'')
-    if strnumbers11 > 0:
-        aa = list.replace(" ",'')
-    aa = list.replace('', 'missing')
-    return aa
+
+    try:
+        if strnumbers > 0:
+            aa = list.rename(columns=lambda x: x.replace('-', ''), inplace=True)
+        if strnumbers1 > 0:
+            aa = list.rename(columns=lambda x: x.replace('*', ''), inplace=True)
+        if strnumbers3 > 0:
+            aa = list.rename(columns=lambda x: x.replace(' ', ''), inplace=True)
+        if strnumbers13 > 0:
+            aa = list.rename(columns=lambda x: x.replace('\n', ''), inplace=True)
+        if strnumbers4 > 0:
+            aa = list.replace("*",'')
+        if strnumbers5 > 0:
+            aa = list.replace("\'",'')
+        if strnumbers6 > 0:
+            aa = list.replace("\n",'')
+        if strnumbers7 > 0:
+            aa = list.replace("\r",'')
+        if strnumbers8 > 0:
+            aa = list.replace("\f",'')
+        if strnumbers9 > 0:
+            aa = list.replace("\'",'')
+        if strnumbers10 > 0:
+            aa = list.replace("\;",'')
+        if strnumbers11 > 0:
+            aa = list.replace(" ",'')
+        aa = list.replace('', 'missing')
+        return aa
+
+    except AttributeError:
+        aa = []
+        return aa
 
 #模糊匹配特定字符串并模糊匹配出相关字段的列信息
 class findallneedstr(object):

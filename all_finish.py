@@ -3,11 +3,12 @@ from part_2.part_3 import *
 import xlrd
 import re
 from functools import lru_cache
+#第二步骤
 
 
 class ca():
 
-    @lru_cache(maxsize=200)
+    @lru_cache(maxsize=900)
     def p2(self):
         workbook_origin = xlrd.open_workbook('C:\\Users\\Administrator\\PycharmProjects\\excel_all_data\\excelalldata.xlsx')
         s0 = workbook_origin.sheets()[0]
